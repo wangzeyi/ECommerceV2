@@ -1,0 +1,50 @@
+package com.example.wang_.ecommercev2.main;
+
+
+import android.view.View;
+import com.example.wang_.ecommercev2.R;
+import com.example.wang_.ecommercev2.Server.IServerManager;
+import com.example.wang_.ecommercev2.Server.MyURL;
+import com.example.wang_.ecommercev2.Server.ServerManager;
+
+public class Presenter implements IPresenter, IServerManager.onResponseListener{
+
+    IView view;
+    ServerManager serverManager;
+
+
+    public Presenter(MainActivity mainActivity) {
+        this.view = mainActivity;
+        this.serverManager = new ServerManager();
+    }
+
+    @Override
+    public void onClickHandler(View v) {
+        switch(v.getId()){
+            case R.id.button_register:
+                view.passRegister();
+                break;
+            case R.id.button_login:
+                view.passLogin();
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+    @Override
+    public void passRegister(String info) {
+
+
+    }
+
+    @Override
+    public void passLogin(String info) {
+        serverManager.passLogin(MyURL.url_login, info, this);
+    }
+
+
+
+}
