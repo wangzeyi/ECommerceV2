@@ -1,6 +1,7 @@
 package com.example.wang_.ecommercev2.main;
 
 
+import android.content.Intent;
 import android.view.View;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.IServerManager;
@@ -42,9 +43,12 @@ public class Presenter implements IPresenter, IServerManager.onResponseListener{
 
     @Override
     public void passLogin(String info) {
-        serverManager.passLogin(MyURL.url_login, info, this);
+        serverManager.passLogin(MyURL.URL_LOGIN, info, this);
     }
 
 
-
+    @Override
+    public void gotoCategory(String info_login) {
+        view.gotoCategory(info_login);
+    }
 }

@@ -4,7 +4,7 @@ public interface IServerManager extends IServerHelper{
 
 
     interface onResponseListener{
-
+        void gotoCategory(String s);
     }
 
 }

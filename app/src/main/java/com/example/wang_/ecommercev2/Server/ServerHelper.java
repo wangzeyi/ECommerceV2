@@ -22,17 +22,20 @@ public class ServerHelper implements IServerHelper{
     String mobile, pwd;
     String id, appapikey;
 
+
     public ServerHelper() {
     }
 
+
+
     @Override
-    public void passLogin(String url, String info, IServerManager.onResponseListener listener) {
+    public void passLogin(String url, String info, final IServerManager.onResponseListener listener) {
 
         String[] info_split = info.split(" ");
         mobile = info_split[0];
         pwd = info_split[1];
 
-        //url_login =   "http://rjtmobile.com/aamir/e-commerce/android-app/shop_login.php";
+        //URL_LOGIN =   "http://rjtmobile.com/aamir/e-commerce/android-app/shop_login.php";
         //url_mylogin = "http://rjtmobile.com/aamir/e-commerce/android-app/shop_login.php?mobile=131&password=123"
         String url_mylogin = url + "?" + "mobile=" + mobile + "&password=" + pwd;
 
@@ -40,31 +43,35 @@ public class ServerHelper implements IServerHelper{
             @Override
             public void onResponse(JSONArray response) {
                 if(response != null) {
-/**
- "msg": "success",
- "id": "1393",
- "firstname": "zeyi",
- "lastname": "wang",
- "email": "andy@123.com",
- "mobile": "131",
- "appapikey ": "0519f65b870f1f5261e82f207a79b123"
- *
- */
+                /**
+                 "msg": "success",
+                 "id": "1393",
+                 "firstname": "zeyi",
+                 "lastname": "wang",
+                 "email": "andy@123.com",
+                 "mobile": "131",
+                 "appapikey ": "0519f65b870f1f5261e82f207a79b123"
+                 *
+                 */
                     for (int i = 0; i < response.length(); i++) {
                         //Log.d("MyTag", response.toString());
 
                         try {
-                            Log.d("MyTag", response.toString());
+                            //Log.d("MyTag", response.toString());
                             JSONObject jsonObject = response.getJSONObject(i);
                             id = jsonObject.getString("id");
                             appapikey = jsonObject.getString("appapikey ");
                             Log.d("MyTag", id + " " + appapikey);
 
+                            String info_login = id + " " + appapikey;
+                            Log.d("TagLogin", info_login);
+                            listener.gotoCategory(info_login);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
                     }
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -75,5 +82,25 @@ public class ServerHelper implements IServerHelper{
         });
 
         AppController.getInstance().addToRequestQueue(request);
+
+    }
+
+
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAppapikey() {
+        return appapikey;
+    }
+
+    public void setAppapikey(String appapikey) {
+        this.appapikey = appapikey;
     }
 }
