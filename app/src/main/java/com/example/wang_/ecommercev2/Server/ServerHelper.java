@@ -61,10 +61,10 @@ public class ServerHelper implements IServerHelper{
                             JSONObject jsonObject = response.getJSONObject(i);
                             id = jsonObject.getString("id");
                             appapikey = jsonObject.getString("appapikey ");
-                            Log.d("MyTag", id + " " + appapikey);
+                            //Log.d("MyTag", id + " " + appapikey);
 
                             String info_login = id + " " + appapikey;
-                            Log.d("TagLogin", info_login);
+                            //Log.d("TagLogin", info_login);
                             listener.gotoCategory(info_login);
                         } catch (JSONException e) {
                             e.printStackTrace();
