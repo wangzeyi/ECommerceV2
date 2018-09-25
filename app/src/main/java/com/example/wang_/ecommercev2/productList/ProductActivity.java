@@ -49,11 +49,11 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
             public void onItemClick(MyProduct myProduct) {
 
                 int pid = Integer.parseInt(myProduct.getId());
-                int pquantity = Integer.parseInt(myProduct.getQuantity());
+                //int pquantity = Integer.parseInt(myProduct.getQuantity());
                 String image = myProduct.getImage();
                 String pname = myProduct.getPname();
 
-                presenter.saveOrder(Integer.parseInt(id), pid, pquantity, image, pname);
+                presenter.saveOrder(Integer.parseInt(id), pid, 1, image, pname);
             }
         });
         RecyclerView.LayoutManager manager = new LinearLayoutManager(ProductActivity.this);
@@ -62,7 +62,7 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
         recyclerView_product.setAdapter(myAdapter);
 
 
-        Log.d("MyProduct", id+" "+appapikey+" "+cid+" "+scid);
+        //Log.d("MyProduct", id+" "+appapikey+" "+cid+" "+scid);
 
         //http://rjtmobile.com/ansari/shopingcart/androidapp/product_details.php?cid=107&scid=205
         // &api_key=7a89e02e90239a0fa2d17adb209ade18&user_id=1249
