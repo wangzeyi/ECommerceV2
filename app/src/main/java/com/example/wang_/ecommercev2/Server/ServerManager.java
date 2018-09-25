@@ -19,7 +19,7 @@ public class ServerManager implements IServerManager{
     }
 
     @Override
-    public void loadSubCategory(String url, onResponseListener listener) {
+    public void loadSubCategory(String url, onSubProductListener listener) {
         serverHelper.loadSubCategory(url, listener);
     }
 

@@ -1,5 +1,6 @@
 package com.example.wang_.ecommercev2.category;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -16,32 +18,48 @@ import com.example.wang_.ecommercev2.Adapter.ProductAdapter;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.Server.ServerHelper;
-import com.example.wang_.ecommercev2.main.MainActivity;
+import com.example.wang_.ecommercev2.subcategory.SubCategoryActivity;
 import com.example.wang_.ecommercev2.utils.AppController;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity implements IViewCategory{
     String id, appapikey;
     ServerHelper serverHelper;
     List<EProduct> myList;
     RecyclerView recyclerView_product;
     ProductAdapter myAdapter;
+    IPresenterCategory presenterCategory;
+    Frag_Category frag_category;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
         serverHelper = new ServerHelper();
-        myList = new ArrayList<EProduct>();
+        myList = new ArrayList<>();
         recyclerView_product = findViewById(R.id.recyclerView);
-        myAdapter = new ProductAdapter(myList);
+        presenterCategory = new PresenterCategory(CategoryActivity.this);
+        editor = getSharedPreferences("ServerInfo", MODE_PRIVATE).edit();
+        myAdapter = new ProductAdapter(myList, new ProductAdapter.EProductOnClickListener() {
+            @Override
+            public void onItemClick(EProduct eProduct) {
+                //Log.d("MyListener", eProduct.getCid()+" "+eProduct.getCname() );
+                editor.putString("cid",eProduct.getCid());
+                editor.commit();
+                //Log.d("MyCat", eProduct.getCid());
+                presenterCategory.popDetail(eProduct);
+
+            }
+        });
+
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(CategoryActivity.this);
         recyclerView_product.setLayoutManager(manager);
@@ -113,4 +131,35 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void popDetail(Frag_Category f) {
+        if(frag_category == null) {
+            frag_category = f;
+            getFragmentManager().beginTransaction().add(R.id.category_layout, frag_category).commit();
+        }
+        else{
+            frag_category = f;
+            getFragmentManager().beginTransaction().replace(R.id.category_layout, f).commit();
+        }
+
+
+    }
+
+    @Override
+    public void destroyDetail() {
+        getFragmentManager().beginTransaction().remove(frag_category).commit();
+    }
+
+    @Override
+    public void goSubCategory() {
+        Intent i = new Intent(CategoryActivity.this, SubCategoryActivity.class);
+        startActivity(i);
+    }
+
+
+    public void onClickFrag(View view) {
+
+        presenterCategory.onClickHandler(view);
+
+    }
 }

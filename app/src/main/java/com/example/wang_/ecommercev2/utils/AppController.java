@@ -18,6 +18,8 @@ public class AppController extends Application {
 
     private static AppController mInstance;
 
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -61,4 +63,7 @@ public class AppController extends Application {
             mRequestQueue.cancelAll(tag);
         }
     }
+
+
+
 }

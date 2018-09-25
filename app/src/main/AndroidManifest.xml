@@ -19,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".category.CategoryActivity"></activity>
+        <activity android:name=".category.CategoryActivity" />
+        <activity android:name=".subcategory.SubCategoryActivity" />
+        <activity android:name=".productList.ProductActivity" />
+        <activity android:name=".wishlist.WishListActivity"></activity>
     </application>
 
 </manifest>

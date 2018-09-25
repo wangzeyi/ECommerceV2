@@ -13,35 +13,33 @@ import com.example.wang_.ecommercev2.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder>{
+public class MyProductAdapter extends RecyclerView.Adapter<MyProductAdapter.MyViewHolder>{
 
-    List<EProduct> myList;
-    EProductOnClickListener listener;
+    List<MyProduct> myList;
+    MyProductAdapter.MyProductOnClickListener listener;
 
-    public ProductAdapter(List<EProduct> myList, EProductOnClickListener listener) {
+    public MyProductAdapter(List<MyProduct> myList, MyProductOnClickListener listener) {
         this.myList = myList;
         this.listener = listener;
     }
 
+    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
 
 
-        return new MyViewHolder(v, parent.getContext());
+        return new MyProductAdapter.MyViewHolder(v, parent.getContext());
     }
 
     @Override
-    public void onBindViewHolder( MyViewHolder holder, int position) {
-
-        EProduct eProduct = myList.get(position);
-        Picasso.with(holder.context).load(eProduct.cimagerl).into(holder.imageView_Product);
-        holder.textView_Description.setText(eProduct.cdiscription);
-        holder.textView_Title.setText(eProduct.getCname());
-        holder.bind(eProduct, listener);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        MyProduct myProduct = myList.get(position);
+        Picasso.with(holder.context).load(myProduct.image).into(holder.imageView_Product);
+        holder.textView_Description.setText(myProduct.discription);
+        holder.textView_Title.setText(myProduct.pname);
+        holder.bind(myProduct, listener);
     }
 
     @Override
@@ -64,19 +62,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             this.context = ctx;
         }
 
-        public void bind(final EProduct eProduct, final EProductOnClickListener listener){
+        public void bind(final MyProduct myProduct, final MyProductAdapter.MyProductOnClickListener listener){
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClick(eProduct);
+                    listener.onItemClick(myProduct);
                 }
             });
         }
 
     }
 
-    public interface EProductOnClickListener{
-        void onItemClick(EProduct eProduct);
+    public interface MyProductOnClickListener{
+        void onItemClick(MyProduct myProduct);
     }
 
 

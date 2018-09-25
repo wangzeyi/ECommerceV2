@@ -3,6 +3,8 @@ package com.example.wang_.ecommercev2.main;
 
 import android.content.Intent;
 import android.view.View;
+
+import com.example.wang_.ecommercev2.Adapter.SubEProduct;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.IServerManager;
 import com.example.wang_.ecommercev2.Server.MyURL;
@@ -51,4 +53,6 @@ public class Presenter implements IPresenter, IServerManager.onResponseListener{
     public void gotoCategory(String info_login) {
         view.gotoCategory(info_login);
     }
+
+
 }

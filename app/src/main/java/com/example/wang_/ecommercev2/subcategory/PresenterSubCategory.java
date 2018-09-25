@@ -8,7 +8,7 @@ import com.example.wang_.ecommercev2.Server.ServerManager;
 
 import java.util.List;
 
-public class PresenterSubCategory implements IPresenterSubCategory, IServerManager.onResponseListener{
+public class PresenterSubCategory implements IPresenterSubCategory, IServerManager.onSubProductListener{
 
     IViewSubCategory view;
     IServerManager manager;
@@ -18,19 +18,19 @@ public class PresenterSubCategory implements IPresenterSubCategory, IServerManag
         this.manager = new ServerManager();
     }
 
-    @Override
-    public void gotoCategory(String s) {
+//    @Override
+//    public void addSubEProduct(SubEProduct subEProduct) {
+//        view.addSubEProduct(subEProduct);
+//    }
 
+    @Override
+    public void loadSub(String url) {
+        manager.loadSubCategory(url, this);
     }
 
     @Override
     public void addSubEProduct(SubEProduct subEProduct) {
         view.addSubEProduct(subEProduct);
-    }
-
-    @Override
-    public void loadSub(String url) {
-        manager.loadSubCategory(url, this);
     }
 
 
