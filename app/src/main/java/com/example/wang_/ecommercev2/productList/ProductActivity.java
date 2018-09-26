@@ -19,6 +19,7 @@ import com.example.wang_.ecommercev2.Adapter.OrderProduct;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.category.CategoryActivity;
+import com.example.wang_.ecommercev2.profile.ProfileActivity;
 import com.example.wang_.ecommercev2.wishlist.WishListActivity;
 
 import java.util.ArrayList;
@@ -97,11 +98,12 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
 
         switch(item.getItemId()){
             case R.id.myprofile:
-
+                Intent i1 = new Intent(ProductActivity.this, ProfileActivity.class);
+                startActivity(i1);
                 break;
             case R.id.mywishlist:
-                Intent i = new Intent(ProductActivity.this, WishListActivity.class);
-                startActivity(i);
+                Intent i2 = new Intent(ProductActivity.this, WishListActivity.class);
+                startActivity(i2);
                 break;
         }
 

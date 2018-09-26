@@ -22,7 +22,8 @@
         <activity android:name=".category.CategoryActivity" />
         <activity android:name=".subcategory.SubCategoryActivity" />
         <activity android:name=".productList.ProductActivity" />
-        <activity android:name=".wishlist.WishListActivity"></activity>
+        <activity android:name=".wishlist.WishListActivity" />
+        <activity android:name=".profile.ProfileActivity"></activity>
     </application>
 
 </manifest>

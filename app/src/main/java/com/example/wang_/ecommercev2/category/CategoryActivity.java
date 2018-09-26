@@ -21,6 +21,8 @@ import com.example.wang_.ecommercev2.Adapter.ProductAdapter;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.Server.ServerHelper;
+import com.example.wang_.ecommercev2.productList.ProductActivity;
+import com.example.wang_.ecommercev2.profile.ProfileActivity;
 import com.example.wang_.ecommercev2.subcategory.SubCategoryActivity;
 import com.example.wang_.ecommercev2.utils.AppController;
 import com.example.wang_.ecommercev2.wishlist.WishListActivity;
@@ -103,7 +105,8 @@ public class CategoryActivity extends AppCompatActivity implements IViewCategory
 
         switch(item.getItemId()){
             case R.id.myprofile:
-
+                Intent i1 = new Intent(CategoryActivity.this, ProfileActivity.class);
+                startActivity(i1);
                 break;
             case R.id.mywishlist:
                 Intent i = new Intent(CategoryActivity.this, WishListActivity.class);
