@@ -7,23 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.wang_.ecommercev2.Adapter.EProduct;
 import com.example.wang_.ecommercev2.Adapter.SubEProduct;
 import com.example.wang_.ecommercev2.Adapter.SubProductAdapter;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
-import com.example.wang_.ecommercev2.category.CategoryActivity;
 import com.example.wang_.ecommercev2.productList.ProductActivity;
-import com.example.wang_.ecommercev2.utils.AppController;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +26,7 @@ public class SubCategoryActivity extends AppCompatActivity implements IViewSubCa
     RecyclerView recyclerView_product;
     SubProductAdapter myAdapter;
     SharedPreferences.Editor editor;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +38,9 @@ public class SubCategoryActivity extends AppCompatActivity implements IViewSubCa
         recyclerView_product = findViewById(R.id.recyclerView_sub);
         editor = getSharedPreferences("ServerInfo", MODE_PRIVATE).edit();
 
+        toolbar = findViewById(R.id.toolbar_sub);
+        toolbar.setTitle("Subcategory");
+        setSupportActionBar(toolbar);
 
         id = prefs.getString("id", "umm");
         appapikey = prefs.getString("appapikey", "umm");

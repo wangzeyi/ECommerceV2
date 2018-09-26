@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.category.CategoryActivity;
@@ -17,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements IView {
     Button button_Register, button_Login;
     IPresenter presenter;
     SharedPreferences.Editor editor;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements IView {
 
         txt_Pwd = findViewById(R.id.editText_pwd);
         txt_Mobile = findViewById(R.id.editText_mobile);
+        toolbar = findViewById(R.id.toolbar_main);
+        toolbar.setTitle("Old Navy");
+        setSupportActionBar(toolbar);
+
 
         button_Register = findViewById(R.id.button_register);
         button_Login = findViewById(R.id.button_login);
@@ -52,6 +62,16 @@ public class MainActivity extends AppCompatActivity implements IView {
         presenter.passLogin(info);
         //Intent i = new Intent(MainActivity.this, CategoryActivity.class);
         //startActivity(i);
+    }
+
+    @Override
+    public void loginSuccess() {
+        Toast.makeText(this, "Login Success!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginFail() {
+        Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show();
     }
 
     @Override

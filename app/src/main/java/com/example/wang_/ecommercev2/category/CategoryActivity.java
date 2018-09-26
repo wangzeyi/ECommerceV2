@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.android.volley.Response;
@@ -20,6 +23,7 @@ import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.Server.ServerHelper;
 import com.example.wang_.ecommercev2.subcategory.SubCategoryActivity;
 import com.example.wang_.ecommercev2.utils.AppController;
+import com.example.wang_.ecommercev2.wishlist.WishListActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,11 +41,16 @@ public class CategoryActivity extends AppCompatActivity implements IViewCategory
     IPresenterCategory presenterCategory;
     Frag_Category frag_category;
     SharedPreferences.Editor editor;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
+        toolbar = findViewById(R.id.toolbar_category);
+        toolbar.setTitle("Main Category");
+        setSupportActionBar(toolbar);
 
         serverHelper = new ServerHelper();
         myList = new ArrayList<>();
@@ -79,6 +88,30 @@ public class CategoryActivity extends AppCompatActivity implements IViewCategory
 
         loadCategory();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.mymenu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.myprofile:
+
+                break;
+            case R.id.mywishlist:
+                Intent i = new Intent(CategoryActivity.this, WishListActivity.class);
+                startActivity(i);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void loadCategory(){

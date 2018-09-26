@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    tools:context=".main.MainActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <EditText
         android:id="@+id/editText_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="63dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="67dp"
+        android:layout_marginBottom="361dp"
+        android:layout_marginTop="160dp"
         android:ems="10"
         android:hint="Mobile"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_login"
+        app:layout_constraintStart_toStartOf="@+id/button_register"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
     <EditText
         android:id="@+id/editText_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPersonName"
@@ -34,23 +36,52 @@
         android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="63dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginStart="64dp"
+        android:background="@android:color/holo_purple"
         android:onClick="onClickHandler"
         android:text="Register"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_pwd" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_login"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="46dp"
-        android:layout_marginStart="46dp"
+        android:layout_marginBottom="145dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginStart="39dp"
+        android:background="@android:color/holo_purple"
         android:onClick="onClickHandler"
         android:text="Login"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_register"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_register" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/editText_mobile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_welcome"
+        android:layout_width="136dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="132dp"
+        android:text="Welcome!"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

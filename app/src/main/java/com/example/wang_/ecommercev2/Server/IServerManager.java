@@ -10,7 +10,8 @@ public interface IServerManager extends IServerHelper{
 
     interface onResponseListener{
         void gotoCategory(String s);
-
+        void loginSuccess();
+        void loginFail();
         //void addSubEProduct(SubEProduct subEProduct);
     }
 

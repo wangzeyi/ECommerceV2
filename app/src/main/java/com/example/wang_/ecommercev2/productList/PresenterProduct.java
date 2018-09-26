@@ -37,11 +37,6 @@ public class PresenterProduct implements IPresenterProduct, IServerManager.onPro
     @Override
     public void onclick(View v) {
 
-        switch(v.getId()){
-            case R.id.button_wishlist:
-                view.goWishList();
-                break;
-        }
     }
 
     @Override

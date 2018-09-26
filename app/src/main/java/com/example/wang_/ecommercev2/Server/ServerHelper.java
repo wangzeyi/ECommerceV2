@@ -65,6 +65,7 @@ public class ServerHelper implements IServerHelper{
 
                             String info_login = id + " " + appapikey;
                             //Log.d("TagLogin", info_login);
+                            listener.loginSuccess();
                             listener.gotoCategory(info_login);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -78,6 +79,7 @@ public class ServerHelper implements IServerHelper{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("MyTag", "Error");
+                listener.loginFail();
             }
         });
 

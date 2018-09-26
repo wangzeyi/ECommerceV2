@@ -54,5 +54,15 @@ public class Presenter implements IPresenter, IServerManager.onResponseListener{
         view.gotoCategory(info_login);
     }
 
+    @Override
+    public void loginSuccess() {
+        view.loginSuccess();
+    }
+
+    @Override
+    public void loginFail() {
+        view.loginFail();
+    }
+
 
 }

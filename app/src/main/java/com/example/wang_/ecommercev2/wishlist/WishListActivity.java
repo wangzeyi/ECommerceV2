@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.example.wang_.ecommercev2.Adapter.OrderProduct;
 import com.example.wang_.ecommercev2.Adapter.OrderProductAdapter;
@@ -27,11 +28,16 @@ public class WishListActivity extends AppCompatActivity implements IViewWishList
 
     MyDataBase myDataBase;
     SQLiteDatabase sqLiteDatabase;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
+
+        toolbar = findViewById(R.id.toolbar_wishlist);
+        toolbar.setTitle("My WishList");
+        setSupportActionBar(toolbar);
 
         presenter = new PresenterWishList(WishListActivity.this);
 
