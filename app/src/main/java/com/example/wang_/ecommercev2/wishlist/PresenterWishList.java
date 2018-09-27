@@ -6,11 +6,14 @@ import com.example.wang_.ecommercev2.Adapter.OrderProduct;
 import com.example.wang_.ecommercev2.data.Contract;
 import com.example.wang_.ecommercev2.data.database.MyDataBase;
 
+import javax.inject.Inject;
+
 public class PresenterWishList implements IPresenterWishList {
 
     IViewWishList view;
     MyDataBase myDataBase;
     SQLiteDatabase sqLiteDatabase;
+
 
     public PresenterWishList(WishListActivity wishListActivity) {
         this.view = wishListActivity;
@@ -27,5 +30,6 @@ public class PresenterWishList implements IPresenterWishList {
                  Contract.Entry.COLUMN_NAME_PNAME + "=" +"'"+pname +"'",
                  null);
         view.loadDataBase();
+
     }
 }

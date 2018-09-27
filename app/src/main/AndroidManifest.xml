@@ -23,7 +23,9 @@
         <activity android:name=".subcategory.SubCategoryActivity" />
         <activity android:name=".productList.ProductActivity" />
         <activity android:name=".wishlist.WishListActivity" />
-        <activity android:name=".profile.ProfileActivity"></activity>
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".checkout.CheckoutActivity" />
+        <activity android:name=".splash.SplashActivity"></activity>
     </application>
 
 </manifest>

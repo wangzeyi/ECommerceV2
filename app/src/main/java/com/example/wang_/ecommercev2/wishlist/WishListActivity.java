@@ -1,5 +1,6 @@
 package com.example.wang_.ecommercev2.wishlist;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +9,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.wang_.ecommercev2.Adapter.OrderProduct;
 import com.example.wang_.ecommercev2.Adapter.OrderProductAdapter;
 import com.example.wang_.ecommercev2.R;
+import com.example.wang_.ecommercev2.checkout.CheckoutActivity;
 import com.example.wang_.ecommercev2.data.Contract;
 import com.example.wang_.ecommercev2.data.database.MyDataBase;
 import com.example.wang_.ecommercev2.subcategory.SubCategoryActivity;
@@ -19,16 +24,22 @@ import com.example.wang_.ecommercev2.subcategory.SubCategoryActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class WishListActivity extends AppCompatActivity implements IViewWishList{
 
+    @Inject
     List<OrderProduct> mylist;
     RecyclerView recyclerView_product;
     OrderProductAdapter myAdapter;
+    
     IPresenterWishList presenter;
 
     MyDataBase myDataBase;
     SQLiteDatabase sqLiteDatabase;
     Toolbar toolbar;
+
+    MyInterface myInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +52,10 @@ public class WishListActivity extends AppCompatActivity implements IViewWishList
 
         presenter = new PresenterWishList(WishListActivity.this);
 
-        mylist = new ArrayList<>();
+        myInterface = DaggerMyInterface.builder().wishListDagger(new WishListDagger()).build();
+        myInterface.inject(this);
+
+        //mylist = new ArrayList<>();
         myAdapter = new OrderProductAdapter(mylist, new OrderProductAdapter.MyOrderOnClickListener() {
             @Override
             public void onItemClick(OrderProduct orderProduct) {
@@ -94,6 +108,26 @@ public class WishListActivity extends AppCompatActivity implements IViewWishList
         else{
             mylist.clear();
             myAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "WishList is Empty", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_wishlist, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.checkout:
+                Intent i = new Intent(WishListActivity.this, CheckoutActivity.class);
+                startActivity(i);
+                break;
+        }
+
+        return true;
     }
 }
