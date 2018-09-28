@@ -28,5 +28,10 @@ public class ServerManager implements IServerManager{
         serverHelper.loadProduct(url, listener);
     }
 
+    @Override
+    public void placeOrder(String url, onCheckoutListener listener) {
+       serverHelper.placeOrder(url, listener);
+    }
+
 
 }

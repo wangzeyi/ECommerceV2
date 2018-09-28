@@ -28,7 +28,7 @@ import javax.inject.Inject;
 
 public class WishListActivity extends AppCompatActivity implements IViewWishList{
 
-    @Inject
+
     List<OrderProduct> mylist;
     RecyclerView recyclerView_product;
     OrderProductAdapter myAdapter;
@@ -52,10 +52,7 @@ public class WishListActivity extends AppCompatActivity implements IViewWishList
 
         presenter = new PresenterWishList(WishListActivity.this);
 
-        myInterface = DaggerMyInterface.builder().wishListDagger(new WishListDagger()).build();
-        myInterface.inject(this);
-
-        //mylist = new ArrayList<>();
+        mylist = new ArrayList<>();
         myAdapter = new OrderProductAdapter(mylist, new OrderProductAdapter.MyOrderOnClickListener() {
             @Override
             public void onItemClick(OrderProduct orderProduct) {

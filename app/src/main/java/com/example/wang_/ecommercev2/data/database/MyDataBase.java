@@ -14,11 +14,12 @@ public class MyDataBase extends SQLiteOpenHelper{
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + Contract.Entry.TABLE_NAME + " (" +
                     Contract.Entry._ID + " INTEGER PRIMARY KEY," +
-                    Contract.Entry.COLUMN_NAME_USERID + INTEGER_TYPE + COMMA_SEP +
-                    Contract.Entry.COLUMN_NAME_ITEMID + INTEGER_TYPE + COMMA_SEP +
+                    Contract.Entry.COLUMN_NAME_USERID + TEXT_TYPE + COMMA_SEP +
+                    Contract.Entry.COLUMN_NAME_ITEMID + TEXT_TYPE + COMMA_SEP +
                     Contract.Entry.COLUMN_NAME_QUANTITY + INTEGER_TYPE + COMMA_SEP +
                     Contract.Entry.COLUMN_NAME_IMAGE + TEXT_TYPE + COMMA_SEP +
-                    Contract.Entry.COLUMN_NAME_PNAME + TEXT_TYPE + " )";
+                    Contract.Entry.COLUMN_NAME_PNAME + TEXT_TYPE + COMMA_SEP +
+                    Contract.Entry.COLUMN_NAME_PRIZE + TEXT_TYPE + " )";
 
 
 

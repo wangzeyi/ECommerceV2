@@ -7,4 +7,5 @@ public interface IView {
     void loginSuccess();
     void loginFail();
     void gotoCategory(String info_login);
+    void validationFail();
 }

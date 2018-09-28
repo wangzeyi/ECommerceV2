@@ -5,19 +5,29 @@ import android.content.Context;
 import com.example.wang_.ecommercev2.productList.IViewProduct;
 import com.example.wang_.ecommercev2.productList.ProductActivity;
 
-public class DBManager implements IDBManager {
+public class DBManager implements IDBManager{
 
-    IViewProduct view;
+
     IDBHelper dbhelper;
 
-    public DBManager(ProductActivity productActivity){
-        this.view = productActivity;
-        this.dbhelper = new DBHelper(productActivity);
+    public DBManager(Context ctx){
+
+        this.dbhelper = new DBHelper(ctx);
     }
+
+
 
 
     @Override
-    public void saveOrder(int userid, int itemid, int quantity, String image, String pname, IDBManager.onSaveListener listener) {
-        dbhelper.saveOrder(userid, itemid, quantity, image, pname, listener);
+    public void saveOrder(String user_info, String p_info, IDBManager.onSaveListener listener) {
+        dbhelper.saveOrder(user_info, p_info, listener);
     }
+
+    @Override
+    public void getOrder(String user_info, onCheckoutListener listener) {
+        dbhelper.getOrder(user_info, listener);
+    }
+
+
+
 }

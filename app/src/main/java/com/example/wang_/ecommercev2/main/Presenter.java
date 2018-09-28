@@ -10,6 +10,9 @@ import com.example.wang_.ecommercev2.Server.IServerManager;
 import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.Server.ServerManager;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Presenter implements IPresenter, IServerManager.onResponseListener{
 
     IView view;
@@ -45,7 +48,19 @@ public class Presenter implements IPresenter, IServerManager.onResponseListener{
 
     @Override
     public void passLogin(String info) {
-        serverManager.passLogin(MyURL.URL_LOGIN, info, this);
+
+        String[] info_split = info.split(" ");
+        String mobile = info_split[0];
+        Pattern p_mobile = Pattern.compile("[\\d]{10}");
+        Matcher m_mobile = p_mobile.matcher(mobile);
+        boolean b_mobile = m_mobile.matches();
+
+        if(b_mobile) {
+            serverManager.passLogin(MyURL.URL_LOGIN, info, this);
+        }
+        else{
+            view.validationFail();
+        }
     }
 
 

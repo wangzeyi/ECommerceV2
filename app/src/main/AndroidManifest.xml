@@ -12,20 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".category.CategoryActivity" />
         <activity android:name=".subcategory.SubCategoryActivity" />
         <activity android:name=".productList.ProductActivity" />
         <activity android:name=".wishlist.WishListActivity" />
         <activity android:name=".profile.ProfileActivity" />
         <activity android:name=".checkout.CheckoutActivity" />
-        <activity android:name=".splash.SplashActivity"></activity>
+        <activity android:name=".splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".splash.TechActivity" />
+        <activity android:name=".ReceiptActivity"></activity>
     </application>
 
 </manifest>

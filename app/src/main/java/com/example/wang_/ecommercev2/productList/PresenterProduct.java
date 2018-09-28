@@ -30,8 +30,8 @@ public class PresenterProduct implements IPresenterProduct, IServerManager.onPro
     }
 
     @Override
-    public void saveOrder(int userid, int itemid, int quantity, String image, String pname) {
-        dbManager.saveOrder(userid, itemid, quantity, image, pname,this);
+    public void saveOrder(String user_info, String p_info) {
+        dbManager.saveOrder(user_info, p_info,this);
     }
 
     @Override

@@ -13,6 +13,7 @@ public class Contract {
        public static final String COLUMN_NAME_QUANTITY= "quantity";
        public static final String COLUMN_NAME_IMAGE = "image";
        public static final String COLUMN_NAME_PNAME = "pname";
+       public static final String COLUMN_NAME_PRIZE = "prize";
 
    }
 

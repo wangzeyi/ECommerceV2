@@ -26,4 +26,9 @@ public interface IServerManager extends IServerHelper{
         void addSubEProduct(SubEProduct subEProduct);
     }
 
+    interface onCheckoutListener{
+
+        void getOrderDetail(String order_info);
+    }
+
 }

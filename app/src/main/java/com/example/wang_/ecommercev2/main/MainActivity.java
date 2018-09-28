@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -79,15 +80,30 @@ public class MainActivity extends AppCompatActivity implements IView {
 
         String[] info_login_split = info_login.split(" ");
 
+        Log.d("Login Info", info_login);
+
         String id = info_login_split[0];
         String appapikey = info_login_split[1];
+        String firstnm = info_login_split[2];
+        String lastnm = info_login_split[3];
+        String email = info_login_split[4];
+        String mobile = info_login_split[5];
 
         editor.putString("id", id);
         editor.putString("appapikey", appapikey);
+        editor.putString("firstnm", firstnm);
+        editor.putString("lastnm", lastnm);
+        editor.putString("email", email);
+        editor.putString("mobile",mobile);
         editor.commit();
 
         Intent i = new Intent(MainActivity.this, CategoryActivity.class);
         startActivity(i);
+    }
+
+    @Override
+    public void validationFail() {
+        Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
     }
 
     public void onClickHandler(View view) {

@@ -27,7 +27,7 @@ import java.util.List;
 
 public class ProductActivity extends AppCompatActivity implements IViewProduct{
 
-    String id, appapikey, cid, scid;
+    String id, appapikey, cid, scid, firstnm, lastnm, usernm, billingad, deliverad, mobile,email;
     SharedPreferences prefs;
     IPresenterProduct presenter;
     List<MyProduct> mylist;
@@ -46,9 +46,16 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
 
         prefs = getSharedPreferences("ServerInfo", MODE_PRIVATE);
         id = prefs.getString("id", "umm");
+        firstnm = prefs.getString("firstnm","umm");
+        lastnm = prefs.getString("lastnm","umm");
+        usernm = firstnm + " " + lastnm;
         appapikey = prefs.getString("appapikey", "umm");
         cid = prefs.getString("cid", "umm");
         scid = prefs.getString("scid", "umm");
+        mobile = prefs.getString("mobile","umm");
+
+        billingad = "billing address";
+        deliverad = "deliver address";
 
         presenter = new PresenterProduct(ProductActivity.this);
         mylist = new ArrayList<>();
@@ -56,13 +63,34 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
         myAdapter = new MyProductAdapter(mylist, new MyProductAdapter.MyProductOnClickListener() {
             @Override
             public void onItemClick(MyProduct myProduct) {
+/**
+ * item_id'
+ item_names
+ item_quantity
+ final_price
 
-                int pid = Integer.parseInt(myProduct.getId());
-                //int pquantity = Integer.parseInt(myProduct.getQuantity());
+ user_id
+ user_name
+ billingadd
+ deliveryadd
+ mobile
+ email
+
+ api_key
+
+ *
+ */
+                String pid = myProduct.getId();
+                String pquantity = myProduct.getQuantity();
                 String image = myProduct.getImage();
                 String pname = myProduct.getPname();
+                String prize = myProduct.getPrize();
 
-                presenter.saveOrder(Integer.parseInt(id), pid, 1, image, pname);
+                String p_info = pid+" "+pname+" "+pquantity+" "+prize+" "+image;
+                String user_info = id+" "+usernm+" "+mobile+" "+email+" "+appapikey;
+
+                //todo
+                presenter.saveOrder(user_info, p_info);
             }
         });
         RecyclerView.LayoutManager manager = new LinearLayoutManager(ProductActivity.this);

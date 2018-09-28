@@ -7,4 +7,7 @@ public interface IDBManager extends IDBHelper {
 
     }
 
+    interface onCheckoutListener{
+         void placeOrder(String user_info, String p_info);
+    }
 }

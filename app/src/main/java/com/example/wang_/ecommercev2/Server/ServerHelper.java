@@ -1,5 +1,6 @@
 package com.example.wang_.ecommercev2.Server;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.android.volley.Response;
@@ -20,10 +21,11 @@ import java.util.List;
 public class ServerHelper implements IServerHelper{
 
     String mobile, pwd;
-    String id, appapikey;
+    String id, appapikey, firstnm, lastnm, email;
 
 
     public ServerHelper() {
+
     }
 
 
@@ -53,6 +55,7 @@ public class ServerHelper implements IServerHelper{
                  "appapikey ": "0519f65b870f1f5261e82f207a79b123"
                  *
                  */
+
                     for (int i = 0; i < response.length(); i++) {
                         //Log.d("MyTag", response.toString());
 
@@ -61,9 +64,12 @@ public class ServerHelper implements IServerHelper{
                             JSONObject jsonObject = response.getJSONObject(i);
                             id = jsonObject.getString("id");
                             appapikey = jsonObject.getString("appapikey ");
+                            firstnm = jsonObject.getString("firstname");
+                            lastnm = jsonObject.getString("lastname");
+                            email = jsonObject.getString("email");
                             //Log.d("MyTag", id + " " + appapikey);
 
-                            String info_login = id + " " + appapikey;
+                            String info_login = id+" "+appapikey+" "+firstnm+" "+lastnm+" "+email+" "+mobile;
                             //Log.d("TagLogin", info_login);
                             listener.loginSuccess();
                             listener.gotoCategory(info_login);
@@ -175,6 +181,66 @@ public class ServerHelper implements IServerHelper{
             }
         });
 
+        AppController.getInstance().addToRequestQueue(request);
+    }
+
+    @Override
+    public void placeOrder(String url, final IServerManager.onCheckoutListener listener_check) {
+
+        JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.d("MyOrder!", response.toString());
+                try {
+                    JSONArray jsonArray = response.getJSONArray("Order confirmed");
+                    for(int i=0; i<jsonArray.length(); i++){
+/**
+ *             "orderid": "2147484213",
+ "orderstatus": "1",
+ "name": "Aamir",
+ "billingadd": "Noida",
+ "deliveryadd": "Noida",
+ "mobile": "4845425346",
+ "email": "wangze131@gmail.com",
+ "itemid": "701",
+ "itemname": "laptop",
+ "itemquantity": "1",
+ "totalprice": "100000",
+ "paidprice": "100000",
+ "placedon": "2018-09-27 20:12:02"
+ *
+ *
+ */
+                        JSONObject product = jsonArray.getJSONObject(i);
+                        //Log.d("MyOrder!", product.toString());
+                        String orderid = product.getString("orderid");
+                        String billing = product.getString("billingadd");
+                        String deliver = product.getString("deliveryadd");
+                        String itemid = product.getString("itemid");
+                        String itemname = product.getString("itemname");
+                        String quantity = product.getString("itemquantity");
+                        String totalprize = product.getString("totalprice");
+                        String placedon = product.getString("placedon");
+
+                        String order_info = orderid+" "+billing+" "+deliver+" "+itemid+" "+itemname+" "
+                                           +quantity+" "+totalprize+" "+placedon;
+                        listener_check.getOrderDetail(order_info);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("MyCheck", "Error!");
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("MyOrder", "Error");
+            }
+        });
         AppController.getInstance().addToRequestQueue(request);
     }
 

@@ -5,7 +5,7 @@ import android.view.View;
 public interface IPresenterProduct {
 
     void loadProduct(String url);
-    void saveOrder(int userid, int itemid, int quantity, String image, String pname);
+    void saveOrder(String user_info, String p_info);
     void onclick(View v);
 
 }

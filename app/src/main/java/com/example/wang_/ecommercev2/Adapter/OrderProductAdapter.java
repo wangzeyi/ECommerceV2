@@ -41,7 +41,7 @@ public class OrderProductAdapter extends RecyclerView.Adapter<OrderProductAdapte
         Picasso.with(holder.context).load(orderProduct.getImage()).into(holder.imageView_Product);
 
         int quan = orderProduct.getQuantity();
-        holder.textView_Quantity.setText(Integer.toString(quan));
+        holder.textView_Quantity.setText("Quantity: "+Integer.toString(quan));
         holder.textView_Title.setText(orderProduct.getItem_name());
         holder.bind(orderProduct, listener);
 
