@@ -20,6 +20,12 @@ public class MyDataBase extends SQLiteOpenHelper{
                     Contract.Entry.COLUMN_NAME_IMAGE + TEXT_TYPE + COMMA_SEP +
                     Contract.Entry.COLUMN_NAME_PNAME + TEXT_TYPE + COMMA_SEP +
                     Contract.Entry.COLUMN_NAME_PRIZE + TEXT_TYPE + " )";
+    private static final String SQL_CREATE_ENTRIES_PROFILE =
+            "CREATE TABLE " + Contract.Entry.TABLE_NAME_PROFILE + " (" +
+                    Contract.Entry._ID + " INTEGER PRIMARY KEY," +
+                    Contract.Entry.COLUMN_NAME_USERID + TEXT_TYPE + COMMA_SEP +
+                    Contract.Entry.COLUMN_NAME_IMAGE + TEXT_TYPE + " )";
+
 
 
 
@@ -30,6 +36,9 @@ public class MyDataBase extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_ENTRIES_PROFILE);
+
+
     }
 
     @Override

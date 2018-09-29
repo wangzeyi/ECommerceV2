@@ -28,7 +28,8 @@
         </activity>
         <activity android:name=".splash.TechActivity" />
         <activity android:name=".ReceiptActivity" />
-        <activity android:name=".orderhistory.OrderHistoryActivity"></activity>
+        <activity android:name=".orderhistory.OrderHistoryActivity" />
+        <activity android:name=".advertisement.MyAdvertisementActivity"></activity>
     </application>
 
 </manifest>

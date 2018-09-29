@@ -24,7 +24,7 @@ public class DBHelper implements IDBHelper{
 
     @Override
     public void saveOrder(String user_info, String p_info, IDBManager.onSaveListener listener) {
-
+        Log.d("MyAd", user_info+" "+p_info);
         //                String p_info = pid+" "+pname+" "+pquantity+" "+prize;
         //                String user_info = id+" "+usernm+" "+mobile+" "+email+" "+appapikey;
         String[] user_info_split = user_info.split(" ");

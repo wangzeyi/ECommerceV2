@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_profile"
         android:layout_width="258dp"
         android:layout_height="167dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/conan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,4 +60,28 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <EditText
+        android:id="@+id/editText_profilepic"
+        android:layout_width="266dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:layout_marginTop="264dp"
+        android:ems="10"
+        android:hint="Enter URL of Your Profile Picture"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="62dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="260dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

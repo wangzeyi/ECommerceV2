@@ -27,7 +27,7 @@ public class Frag_Category extends Fragment{
         View v = inflater.inflate(R.layout.frag_category, null);
 
         imageView_prod = v.findViewById(R.id.imageView_f_prod);
-        textView_Prod = v.findViewById(R.id.textView_f_prod);
+        //textView_Prod = v.findViewById(R.id.textView_f_prod);
         textView_Title = v.findViewById(R.id.textView_title);
         button_Back = v.findViewById(R.id.button_back);
 
@@ -37,7 +37,7 @@ public class Frag_Category extends Fragment{
         String cname = bundle.getString("cname");
         String cid = bundle.getString("cid");
 
-        textView_Prod.setText(cdiscription);
+        //textView_Prod.setText(cdiscription);
         textView_Title.setText(cname);
         Picasso.with(getActivity()).load(cimagerl).into(imageView_prod);
 

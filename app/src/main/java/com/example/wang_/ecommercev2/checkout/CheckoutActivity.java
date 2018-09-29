@@ -28,6 +28,7 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
     MyDataBase myDataBase;
     SQLiteDatabase sqLiteDatabase;
     SharedPreferences prefs;
+    SharedPreferences.Editor editor;
     String userid, firstnm, lastnm, billingad, deliverad, mobile, email, appapikey;
     String pname;
     String user_info, p_info;
@@ -45,6 +46,7 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
         sqLiteDatabase = myDataBase.getWritableDatabase();
         presenter = new PresenterCheckout(CheckoutActivity.this);
         prefs = getSharedPreferences("ServerInfo", MODE_PRIVATE);
+        editor = prefs.edit();
         editText_Billing = findViewById(R.id.editText_billing);
         editText_Deliver = findViewById(R.id.editText_deliver);
 
@@ -104,6 +106,9 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
                         presenter.getOrder(user_info);
                         last4 = cardToken.getCard().getLast4().toString();
                         cardtype = cardToken.getCard().getType().toString();
+                        editor.putString("last4", last4);
+                        editor.putString("cardtype", cardtype);
+                        editor.commit();
                     }
 
                     @Override

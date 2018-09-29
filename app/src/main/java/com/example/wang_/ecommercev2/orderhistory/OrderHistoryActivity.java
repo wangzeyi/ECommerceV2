@@ -7,6 +7,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.example.wang_.ecommercev2.Adapter.MyOrderHistory;
 import com.example.wang_.ecommercev2.Adapter.MyOrderHistoryAdapter;
@@ -16,6 +20,7 @@ import com.example.wang_.ecommercev2.main.IPresenter;
 import com.example.wang_.ecommercev2.wishlist.WishListActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class OrderHistoryActivity extends AppCompatActivity implements IViewOrderHistory{
@@ -25,6 +30,8 @@ public class OrderHistoryActivity extends AppCompatActivity implements IViewOrde
     List<MyOrderHistory> mylist;
     RecyclerView recyclerView_history;
     MyOrderHistoryAdapter myAdapter;
+    ImageView imageView_flip;
+    Animation anim_flip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,7 @@ public class OrderHistoryActivity extends AppCompatActivity implements IViewOrde
         prefs = getSharedPreferences("ServerInfo", MODE_PRIVATE);
         mylist = new ArrayList<>();
         myAdapter = new MyOrderHistoryAdapter(mylist);
+        imageView_flip = findViewById(R.id.imageView_flip);
 
         recyclerView_history = findViewById(R.id.recycler_history);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(OrderHistoryActivity.this);
@@ -50,6 +58,17 @@ public class OrderHistoryActivity extends AppCompatActivity implements IViewOrde
 
         String url_orderhistory = MyURL.URL_ORDERHISTORY+"?api_key="+appapikey+"&user_id="+userid+"&mobile="+mobile;
         presenter.loadOrderHistory(url_orderhistory);
+
+        anim_flip = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
+
+        imageView_flip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.reverse(mylist);
+                myAdapter.notifyDataSetChanged();
+                imageView_flip.startAnimation(anim_flip);
+            }
+        });
 
     }
 

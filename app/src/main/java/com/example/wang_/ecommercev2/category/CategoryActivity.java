@@ -21,6 +21,7 @@ import com.example.wang_.ecommercev2.Adapter.ProductAdapter;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.Server.ServerHelper;
+import com.example.wang_.ecommercev2.advertisement.MyAdvertisementActivity;
 import com.example.wang_.ecommercev2.orderhistory.OrderHistoryActivity;
 import com.example.wang_.ecommercev2.productList.ProductActivity;
 import com.example.wang_.ecommercev2.profile.ProfileActivity;
@@ -117,6 +118,10 @@ public class CategoryActivity extends AppCompatActivity implements IViewCategory
                 Intent i2 = new Intent(CategoryActivity.this, OrderHistoryActivity.class);
                 startActivity(i2);
                 break;
+            case R.id.myad:
+                Intent i3 = new Intent(CategoryActivity.this, MyAdvertisementActivity.class);
+                startActivity(i3);
+                break;
 
         }
 
@@ -177,11 +182,11 @@ public class CategoryActivity extends AppCompatActivity implements IViewCategory
     public void popDetail(Frag_Category f) {
         if(frag_category == null) {
             frag_category = f;
-            getFragmentManager().beginTransaction().add(R.id.category_layout, frag_category).commit();
+            getFragmentManager().beginTransaction().add(R.id.frag_display, frag_category).commit();
         }
         else{
             frag_category = f;
-            getFragmentManager().beginTransaction().replace(R.id.category_layout, f).commit();
+            getFragmentManager().beginTransaction().replace(R.id.frag_display, f).commit();
         }
 
 

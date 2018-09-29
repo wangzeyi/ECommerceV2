@@ -39,7 +39,7 @@ public class SubProductAdapter extends RecyclerView.Adapter<SubProductAdapter.My
         SubEProduct subEProduct = myList.get(position);
         //Log.d("MyAdapter", subEProduct.scdiscription);
         Picasso.with(holder.context).load(subEProduct.scimageurl).into(holder.imageView_Product);
-        holder.textView_Description.setText(subEProduct.scdiscription);
+        //holder.textView_Description.setText(subEProduct.scdiscription);
         holder.textView_Title.setText(subEProduct.scname);
         holder.bind(subEProduct, listener);
 

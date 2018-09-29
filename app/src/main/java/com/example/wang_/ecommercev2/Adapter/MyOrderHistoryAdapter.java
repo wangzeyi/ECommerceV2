@@ -28,8 +28,28 @@ public class MyOrderHistoryAdapter extends RecyclerView.Adapter<MyOrderHistoryAd
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MyOrderHistory myOrderHistory = myList.get(position);
-        holder.textView_history.setText(myOrderHistory.order_info);
+        //                        String order_info = orderid+" "+orderstatus+" "+name+" "
+        //                                           +mobile+" "+email+" "+itemid+" "+itemq+" "+totalprize+" "+placedon;
+        String order_info = myOrderHistory.order_info;
+        String[] order_info_split = order_info.split(" ");
+        String orderid = order_info_split[0];
+        String orderstatus = order_info_split[1];
+        String name = order_info_split[2];
+        String mobile = order_info_split[3];
+        String email = order_info_split[4];
+        String itemid = order_info_split[5];
+        String itemq = order_info_split[6];
+        String totalprize = order_info_split[7];
+        String placedon = order_info_split[8];
 
+        String order_detail = "Order ID: "+orderid + "\n" + "Order Status: "+ orderstatus+"\n" +
+                              "Item ID: "+itemid + "\n" + "Item Quantity: "+itemq +"\n"+
+                              "Total Prize: "+totalprize+"\n" + "Placed on: "+placedon;
+
+        String user_detail = "User Name: "+ name + "\n" + "Mobile: "+mobile+"\n"+ "Email: "+email;
+
+        holder.textView_order.setText(order_detail);
+        holder.textView_user.setText(user_detail);
     }
 
     @Override
@@ -40,11 +60,13 @@ public class MyOrderHistoryAdapter extends RecyclerView.Adapter<MyOrderHistoryAd
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView_history;
+        TextView textView_order;
+        TextView textView_user;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView_history = itemView.findViewById(R.id.textView_history);
+            textView_order = itemView.findViewById(R.id.textView_orderinfo);
+            textView_user = itemView.findViewById(R.id.textView_userinfo);
         }
     }
 

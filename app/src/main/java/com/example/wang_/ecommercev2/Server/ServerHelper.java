@@ -285,7 +285,7 @@ public class ServerHelper implements IServerHelper{
                         String totalprize = product.getString("totalprice");
                         String placedon = product.getString("placedon");
 
-                        String order_info = orderid+" "+orderstatus+" "+name+" "+billingad+" "+deliveryad+" "
+                        String order_info = orderid+" "+orderstatus+" "+name+" "
                                            +mobile+" "+email+" "+itemid+" "+itemq+" "+totalprize+" "+placedon;
                         listener.returnOrderHistory(order_info);
 

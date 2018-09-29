@@ -8,6 +8,7 @@ public class Contract {
    public static abstract class Entry implements BaseColumns{
 
        public static final String TABLE_NAME = "shoppingcart";
+       public static final String TABLE_NAME_PROFILE = "myprofile";
        public static final String COLUMN_NAME_USERID = "userid";
        public static final String COLUMN_NAME_ITEMID = "itemid";
        public static final String COLUMN_NAME_QUANTITY= "quantity";
