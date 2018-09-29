@@ -10,4 +10,5 @@ public interface IServerHelper {
     void loadSubCategory(String url, IServerManager.onSubProductListener listener);
     void loadProduct(String url, IServerManager.onProductListener listener);
     void placeOrder(String url, IServerManager.onCheckoutListener listener);
+    void getOrderHistory(String url, IServerManager.onOrderHistoryListener listener);
 }

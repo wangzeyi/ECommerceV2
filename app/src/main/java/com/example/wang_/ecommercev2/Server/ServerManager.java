@@ -33,5 +33,10 @@ public class ServerManager implements IServerManager{
        serverHelper.placeOrder(url, listener);
     }
 
+    @Override
+    public void getOrderHistory(String url, onOrderHistoryListener listener) {
+       serverHelper.getOrderHistory(url, listener);
+    }
+
 
 }

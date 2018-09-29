@@ -10,6 +10,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.wang_.ecommercev2.Adapter.MyProduct;
 import com.example.wang_.ecommercev2.Adapter.SubEProduct;
 import com.example.wang_.ecommercev2.utils.AppController;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -148,7 +149,7 @@ public class ServerHelper implements IServerHelper{
             @Override
             public void onResponse(JSONObject response) {
 
-                Log.d("MyProdcut", response.toString());
+                Log.d("MyProduct", response.toString());
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("products");
@@ -242,6 +243,69 @@ public class ServerHelper implements IServerHelper{
             }
         });
         AppController.getInstance().addToRequestQueue(request);
+    }
+
+    @Override
+    public void getOrderHistory(String url, final IServerManager.onOrderHistoryListener listener) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                //Log.d("MyHistSuccess", response.toString());
+                try {
+                    JSONArray jsonArray = response.getJSONArray( "Order history");
+                    for(int i=0; i<jsonArray.length(); i++){
+                        JSONObject product = jsonArray.getJSONObject(i);
+                        /*"orderid": "2147484213",
+                         "orderstatus": "1",
+                         "name": "Aamir",
+                         "billingadd": "Noida",
+                         "deliveryadd": "Noida",
+                         "mobile": "4845425346",
+                         "email": "wangze131@gmail.com",
+                         "itemid": "701",
+                         "itemname": "laptop",
+                         "itemquantity": "1",
+                         "totalprice": "100000",
+                         "paidprice": "100000",
+                         "placedon": "2018-09-27 20:12:02"
+
+                         */
+                        //Log.d("MyOrder!", product.toString());
+                        String orderid = product.getString("orderid");
+                        String orderstatus = product.getString("orderstatus");
+                        String name = product.getString("name");
+                        String billingad = product.getString("billingadd");
+                        String deliveryad = product.getString("deliveryadd");
+                        String mobile = product.getString("mobile");
+                        String email = product.getString("email");
+                        String itemid = product.getString("itemid");
+                        String itemq = product.getString("itemquantity");
+                        String totalprize = product.getString("totalprice");
+                        String placedon = product.getString("placedon");
+
+                        String order_info = orderid+" "+orderstatus+" "+name+" "+billingad+" "+deliveryad+" "
+                                           +mobile+" "+email+" "+itemid+" "+itemq+" "+totalprize+" "+placedon;
+                        listener.returnOrderHistory(order_info);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("MyHistError", "Error");
+            }
+        });
+        AppController.getInstance().addToRequestQueue(request);
+
     }
 
 

@@ -31,4 +31,9 @@ public interface IServerManager extends IServerHelper{
         void getOrderDetail(String order_info);
     }
 
+    interface onOrderHistoryListener{
+        void returnOrderHistory(String order_info);
+    }
+
+
 }

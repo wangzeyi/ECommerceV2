@@ -21,6 +21,7 @@ import com.example.wang_.ecommercev2.Adapter.ProductAdapter;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
 import com.example.wang_.ecommercev2.Server.ServerHelper;
+import com.example.wang_.ecommercev2.orderhistory.OrderHistoryActivity;
 import com.example.wang_.ecommercev2.productList.ProductActivity;
 import com.example.wang_.ecommercev2.profile.ProfileActivity;
 import com.example.wang_.ecommercev2.subcategory.SubCategoryActivity;
@@ -112,6 +113,11 @@ public class CategoryActivity extends AppCompatActivity implements IViewCategory
                 Intent i = new Intent(CategoryActivity.this, WishListActivity.class);
                 startActivity(i);
                 break;
+            case R.id.order_history:
+                Intent i2 = new Intent(CategoryActivity.this, OrderHistoryActivity.class);
+                startActivity(i2);
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);

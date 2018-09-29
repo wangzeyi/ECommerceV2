@@ -89,7 +89,6 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
                 String p_info = pid+" "+pname+" "+pquantity+" "+prize+" "+image;
                 String user_info = id+" "+usernm+" "+mobile+" "+email+" "+appapikey;
 
-                //todo
                 presenter.saveOrder(user_info, p_info);
             }
         });

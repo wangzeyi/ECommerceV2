@@ -14,4 +14,10 @@
         android:icon="@drawable/cart"
         />
 
+    <item android:id="@+id/order_history"
+        android:title="Order History"
+        app:showAsAction="always"
+        android:icon="@drawable/order_history"
+        />
+
 </menu>

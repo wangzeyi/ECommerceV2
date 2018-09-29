@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.wang_.ecommercev2.R;
@@ -32,6 +33,9 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
     String user_info, p_info;
     IPresenterCheckout presenter;
     String last4, cardtype;
+    EditText editText_Billing, editText_Deliver;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,8 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
         sqLiteDatabase = myDataBase.getWritableDatabase();
         presenter = new PresenterCheckout(CheckoutActivity.this);
         prefs = getSharedPreferences("ServerInfo", MODE_PRIVATE);
+        editText_Billing = findViewById(R.id.editText_billing);
+        editText_Deliver = findViewById(R.id.editText_deliver);
 
         String key = "sbpb_ODg0MzdmYWMtYjU0NS00YjkwLTllOGMtNjA4ZjhmYmNiZmUz";
         simplify = new Simplify();
@@ -52,13 +58,16 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
         userid = prefs.getString("id","umm");
         firstnm = prefs.getString("firstnm","umm");
         lastnm = prefs.getString("lastnm","umm");
-        billingad = "billingad";
-        deliverad = "deliverad";
+        //billingad = editText_Billing.getText().toString();
+        //deliverad = editText_Deliver.getText().toString();
         mobile = prefs.getString("mobile","umm");
         email = prefs.getString("email","umm");
         appapikey = prefs.getString("appapikey","umm");
 
-        user_info = userid+" "+firstnm+lastnm+" "+billingad+" "+deliverad+" "+mobile+" "+email+" "+appapikey;
+        //Log.d("MyCheckout", billingad);
+
+
+        //user_info = userid+" "+firstnm+lastnm+" "+billingad+" "+deliverad+" "+mobile+" "+email+" "+appapikey;
 
         /**
          * item_id'
@@ -87,6 +96,11 @@ public class CheckoutActivity extends AppCompatActivity implements IViewCheckout
                     @Override
                     public void onSuccess(CardToken cardToken) {
                         Log.d("MyTag", "onSuccess: "+cardToken.getCard().getType());
+
+                        billingad = editText_Billing.getText().toString();
+                        deliverad = editText_Deliver.getText().toString();
+                        user_info = userid+" "+firstnm+lastnm+" "+billingad+" "+deliverad+" "+mobile+" "+email+" "+appapikey;
+
                         presenter.getOrder(user_info);
                         last4 = cardToken.getCard().getLast4().toString();
                         cardtype = cardToken.getCard().getType().toString();
