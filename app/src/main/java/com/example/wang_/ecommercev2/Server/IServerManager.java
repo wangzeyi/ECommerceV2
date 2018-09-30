@@ -15,6 +15,11 @@ public interface IServerManager extends IServerHelper{
         //void addSubEProduct(SubEProduct subEProduct);
     }
 
+    interface onRegisterListener{
+        void registerSuccess(String reg_info);
+        void registerFail(String error_info);
+    }
+
     interface onProductListener{
 
         void addProduct(MyProduct myProduct);

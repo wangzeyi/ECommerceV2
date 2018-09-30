@@ -68,7 +68,10 @@ public class MyAdvertisementActivity extends AppCompatActivity implements IViewA
         button_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int len = image_array.length;
+                while(count >= len){
+                    count = count - len;
+                }
                 String p_info = pid_array[count]+" "+pname_array[count]+" "+1+" "+prize_array[count]+" "+image_array[count];
                 presenter.saveOrder(user_info, p_info);
             }

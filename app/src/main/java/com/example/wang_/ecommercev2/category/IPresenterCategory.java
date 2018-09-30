@@ -8,5 +8,6 @@ public interface IPresenterCategory {
 
     void popDetail(EProduct eProduct);
     void onClickHandler(View v);
+    String existProfile(String id);
 
 }

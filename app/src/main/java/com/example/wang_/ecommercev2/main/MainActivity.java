@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.category.CategoryActivity;
+import com.example.wang_.ecommercev2.register.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity implements IView {
 
@@ -48,11 +50,9 @@ public class MainActivity extends AppCompatActivity implements IView {
 
 
     @Override
-    public void passRegister() {
-        String pwd = txt_Pwd.getText().toString();
-        String mobile = txt_Mobile.getText().toString();
-        String info = mobile + " " + pwd;
-        presenter.passRegister(info);
+    public void gotoRegister() {
+        Intent i = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(i);
     }
 
     @Override

@@ -7,6 +7,7 @@ import java.util.List;
 public interface IServerHelper {
 
     void passLogin(String url, String info, IServerManager.onResponseListener listener);
+    void goLogin(String url, IServerManager.onRegisterListener listener);
     void loadSubCategory(String url, IServerManager.onSubProductListener listener);
     void loadProduct(String url, IServerManager.onProductListener listener);
     void placeOrder(String url, IServerManager.onCheckoutListener listener);

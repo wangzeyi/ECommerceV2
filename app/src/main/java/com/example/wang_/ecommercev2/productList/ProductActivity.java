@@ -18,6 +18,7 @@ import com.example.wang_.ecommercev2.Adapter.MyProductAdapter;
 import com.example.wang_.ecommercev2.Adapter.OrderProduct;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
+import com.example.wang_.ecommercev2.advertisement.MyAdvertisementActivity;
 import com.example.wang_.ecommercev2.category.CategoryActivity;
 import com.example.wang_.ecommercev2.orderhistory.OrderHistoryActivity;
 import com.example.wang_.ecommercev2.profile.ProfileActivity;
@@ -136,6 +137,10 @@ public class ProductActivity extends AppCompatActivity implements IViewProduct{
             case R.id.order_history:
                 Intent i3 = new Intent(ProductActivity.this, OrderHistoryActivity.class);
                 startActivity(i3);
+                break;
+            case R.id.myad:
+                Intent i4 = new Intent(ProductActivity.this, MyAdvertisementActivity.class);
+                startActivity(i4);
                 break;
 
         }

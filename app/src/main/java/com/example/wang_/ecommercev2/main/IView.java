@@ -2,7 +2,7 @@ package com.example.wang_.ecommercev2.main;
 
 public interface IView {
 
-    void passRegister();
+    void gotoRegister();
     void passLogin();
     void loginSuccess();
     void loginFail();

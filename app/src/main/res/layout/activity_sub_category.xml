@@ -4,34 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".subcategory.SubCategoryActivity">
+    tools:context=".subcategory.SubCategoryActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView_sub"
-        android:layout_width="358dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="21dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="21dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_sub"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_sub"
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView_sub"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar_sub"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_sub"
+        android:layout_width="381dp"
+        android:layout_height="67dp"
+
+        android:background="@color/toolbarBackground"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_sub" />
 </android.support.constraint.ConstraintLayout>

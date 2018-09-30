@@ -102,5 +102,48 @@ public class DBHelper implements IDBHelper{
 
     }
 
+    @Override
+    public void setProfilePic(String url, String id) {
+
+        String whereClause = Contract.Entry.COLUMN_NAME_USERID + "=?";
+        String[] whereArgs = new String[]{
+            id
+        };
+        Cursor cursor = sqLiteDatabase.query(Contract.Entry.TABLE_NAME_PROFILE, null, whereClause,whereArgs,
+                null, null, null);
+        if(cursor.moveToFirst()){
+            ContentValues values_update = new ContentValues();
+            values_update.put(Contract.Entry.COLUMN_NAME_IMAGE, url);
+            sqLiteDatabase.update(Contract.Entry.TABLE_NAME_PROFILE, values_update, whereClause, whereArgs);
+        }
+        else{
+            ContentValues values = new ContentValues();
+            values.put(Contract.Entry.COLUMN_NAME_IMAGE, url);
+            values.put(Contract.Entry.COLUMN_NAME_USERID, id);
+            sqLiteDatabase.insert(Contract.Entry.TABLE_NAME_PROFILE, null, values);
+        }
+
+    }
+
+    @Override
+    public String existProfile(String id) {
+
+        String whereClause = Contract.Entry.COLUMN_NAME_USERID + "=?";
+        String[] whereArgs = new String[]{
+                id
+        };
+        Cursor cursor = sqLiteDatabase.query(Contract.Entry.TABLE_NAME_PROFILE, null, whereClause,whereArgs,
+                null, null, null);
+
+        if(cursor.moveToFirst()){
+           String image = cursor.getString(cursor.getColumnIndex(Contract.Entry.COLUMN_NAME_IMAGE));
+
+           return image;
+        }
+        else{
+           return null;
+        }
+    }
+
 
 }

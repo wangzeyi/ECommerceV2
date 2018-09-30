@@ -19,6 +19,11 @@ public class ServerManager implements IServerManager{
     }
 
     @Override
+    public void goLogin(String url, onRegisterListener listener) {
+        serverHelper.goLogin(url, listener);
+    }
+
+    @Override
     public void loadSubCategory(String url, onSubProductListener listener) {
         serverHelper.loadSubCategory(url, listener);
     }

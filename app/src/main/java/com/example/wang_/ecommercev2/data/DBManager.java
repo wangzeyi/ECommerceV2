@@ -28,6 +28,15 @@ public class DBManager implements IDBManager{
         dbhelper.getOrder(user_info, listener);
     }
 
+    @Override
+    public void setProfilePic(String url, String id) {
+        dbhelper.setProfilePic(url, id);
+    }
+
+    @Override
+    public String existProfile(String id) {
+        return dbhelper.existProfile(id);
+    }
 
 
 }

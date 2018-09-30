@@ -3,6 +3,7 @@
     package="com.example.wang_.ecommercev2">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".utils.AppController"
@@ -29,7 +30,8 @@
         <activity android:name=".splash.TechActivity" />
         <activity android:name=".ReceiptActivity" />
         <activity android:name=".orderhistory.OrderHistoryActivity" />
-        <activity android:name=".advertisement.MyAdvertisementActivity"></activity>
+        <activity android:name=".advertisement.MyAdvertisementActivity" />
+        <activity android:name=".register.RegisterActivity"></activity>
     </application>
 
 </manifest>

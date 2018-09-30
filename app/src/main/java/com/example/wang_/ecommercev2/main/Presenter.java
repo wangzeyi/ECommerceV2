@@ -28,7 +28,7 @@ public class Presenter implements IPresenter, IServerManager.onResponseListener{
     public void onClickHandler(View v) {
         switch(v.getId()){
             case R.id.button_register:
-                view.passRegister();
+                view.gotoRegister();
                 break;
             case R.id.button_login:
                 view.passLogin();

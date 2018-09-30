@@ -5,14 +5,17 @@ import android.view.View;
 
 import com.example.wang_.ecommercev2.Adapter.EProduct;
 import com.example.wang_.ecommercev2.R;
+import com.example.wang_.ecommercev2.data.DBManager;
+import com.example.wang_.ecommercev2.data.IDBManager;
 
 public class PresenterCategory implements IPresenterCategory{
 
     IViewCategory view;
+    IDBManager dbManager;
 
     public PresenterCategory(CategoryActivity categoryActivity) {
         view = categoryActivity;
-
+        dbManager = new DBManager(categoryActivity);
     }
 
 
@@ -45,5 +48,10 @@ public class PresenterCategory implements IPresenterCategory{
                 break;
 
         }
+    }
+
+    @Override
+    public String existProfile(String id) {
+        return dbManager.existProfile(id);
     }
 }

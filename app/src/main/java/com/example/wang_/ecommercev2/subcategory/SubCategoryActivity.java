@@ -8,12 +8,19 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.wang_.ecommercev2.Adapter.SubEProduct;
 import com.example.wang_.ecommercev2.Adapter.SubProductAdapter;
 import com.example.wang_.ecommercev2.R;
 import com.example.wang_.ecommercev2.Server.MyURL;
+import com.example.wang_.ecommercev2.advertisement.MyAdvertisementActivity;
+import com.example.wang_.ecommercev2.category.CategoryActivity;
+import com.example.wang_.ecommercev2.orderhistory.OrderHistoryActivity;
 import com.example.wang_.ecommercev2.productList.ProductActivity;
+import com.example.wang_.ecommercev2.profile.ProfileActivity;
+import com.example.wang_.ecommercev2.wishlist.WishListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +78,40 @@ public class SubCategoryActivity extends AppCompatActivity implements IViewSubCa
         presenter.loadSub(url_sub);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
 
+        getMenuInflater().inflate(R.menu.mymenu, menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.myprofile:
+                Intent i1 = new Intent(SubCategoryActivity.this, ProfileActivity.class);
+                startActivity(i1);
+                break;
+            case R.id.mywishlist:
+                Intent i = new Intent(SubCategoryActivity.this, WishListActivity.class);
+                startActivity(i);
+                break;
+            case R.id.order_history:
+                Intent i2 = new Intent(SubCategoryActivity.this, OrderHistoryActivity.class);
+                startActivity(i2);
+                break;
+            case R.id.myad:
+                Intent i3 = new Intent(SubCategoryActivity.this, MyAdvertisementActivity.class);
+                startActivity(i3);
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void addSubEProduct(SubEProduct subEProduct) {
         mylist.add(subEProduct);

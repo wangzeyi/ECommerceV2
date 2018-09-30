@@ -7,6 +7,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.example.wang_.ecommercev2.Adapter.MyProduct;
 import com.example.wang_.ecommercev2.Adapter.SubEProduct;
 import com.example.wang_.ecommercev2.utils.AppController;
@@ -92,6 +93,25 @@ public class ServerHelper implements IServerHelper{
 
         AppController.getInstance().addToRequestQueue(request);
 
+    }
+
+    @Override
+    public void goLogin(String url, final IServerManager.onRegisterListener listener) {
+        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("MyRegister", response.toString());
+                listener.registerSuccess(response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("MyRegister", "Error");
+                listener.registerFail(error.toString());
+            }
+        });
+        AppController.getInstance().addToRequestQueue(request);
     }
 
     @Override
